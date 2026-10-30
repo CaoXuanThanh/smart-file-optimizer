@@ -1,0 +1,120 @@
+{
+  "disk_comparison": [
+    {
+      "algorithm": "heap",
+      "repeat": 1,
+      "seconds": 0.13336166700014473,
+      "peak_python_bytes": 433094
+    },
+    {
+      "algorithm": "heap",
+      "repeat": 2,
+      "seconds": 0.1391949679998561,
+      "peak_python_bytes": 432970
+    },
+    {
+      "algorithm": "heap",
+      "repeat": 3,
+      "seconds": 0.13082548500005942,
+      "peak_python_bytes": 432846
+    },
+    {
+      "algorithm": "heap",
+      "repeat": 4,
+      "seconds": 0.15282401800004664,
+      "peak_python_bytes": 432722
+    },
+    {
+      "algorithm": "heap",
+      "repeat": 5,
+      "seconds": 0.13888669700008904,
+      "peak_python_bytes": 432598
+    },
+    {
+      "algorithm": "sort",
+      "repeat": 1,
+      "seconds": 0.13834943199981353,
+      "peak_python_bytes": 1884512
+    },
+    {
+      "algorithm": "sort",
+      "repeat": 2,
+      "seconds": 0.1428623490000973,
+      "peak_python_bytes": 1884512
+    },
+    {
+      "algorithm": "sort",
+      "repeat": 3,
+      "seconds": 0.1383196780000162,
+      "peak_python_bytes": 1884512
+    },
+    {
+      "algorithm": "sort",
+      "repeat": 4,
+      "seconds": 0.13711359900003117,
+      "peak_python_bytes": 1901163
+    },
+    {
+      "algorithm": "sort",
+      "repeat": 5,
+      "seconds": 0.13462897899989912,
+      "peak_python_bytes": 1932611
+    }
+  ],
+  "disk_scan": {
+    "actual_files": 10000,
+    "k": 10,
+    "seconds": [
+      0.13627761300017482,
+      0.14265898200005722,
+      0.1388584260000698,
+      0.1398227310000948,
+      0.13551221199986685
+    ],
+    "oracle_match": true,
+    "bytes": "0..2047",
+    "layout": "100 directories x 100 regular files"
+  },
+  "huffman": [
+    {
+      "dataset": "repeated_text",
+      "before": 600000,
+      "after": 317735,
+      "format": "HUF2",
+      "saving_percent": 47.04416666666666,
+      "compress_s": 0.14306938199979413,
+      "decompress_s": 0.4624584880000384,
+      "sha256_match": true
+    },
+    {
+      "dataset": "uniform_bytes",
+      "before": 524288,
+      "after": 526638,
+      "format": "HUF2",
+      "saving_percent": -0.4482269287109375,
+      "compress_s": 0.11028958200017769,
+      "decompress_s": 0.6642891629999212,
+      "sha256_match": true
+    },
+    {
+      "dataset": "seeded_random",
+      "before": 524288,
+      "after": 526638,
+      "format": "HUF2",
+      "saving_percent": -0.4482269287109375,
+      "compress_s": 0.11936627799991584,
+      "decompress_s": 0.6684604699998999,
+      "sha256_match": true
+    },
+    {
+      "dataset": "empty",
+      "before": 0,
+      "after": 46,
+      "format": "HUF2",
+      "saving_percent": 0,
+      "compress_s": 0.0005051969999385619,
+      "decompress_s": 0.00023186500015981437,
+      "sha256_match": true
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+test_empty (test_core.Tests.test_empty) ... ok
+test_no_overwrite (test_core.Tests.test_no_overwrite) ... ok
+test_roundtrip (test_core.Tests.test_roundtrip) ... ok
+test_topk (test_core.Tests.test_topk) ... ok
+test_bad_padding (test_extended.ExtendedTests.test_bad_padding) ... ok
+test_checksum_corruption_cleanup (test_extended.ExtendedTests.test_checksum_corruption_cleanup) ... ok
+test_dangling_symlink_preserved (test_extended.ExtendedTests.test_dangling_symlink_preserved) ... ok
+test_disappearing_file (test_extended.ExtendedTests.test_disappearing_file) ... ok
+test_duplicate_symbols (test_extended.ExtendedTests.test_duplicate_symbols) ... ok
+test_existing_destination_preserved (test_extended.ExtendedTests.test_existing_destination_preserved) ... ok
+test_incompressible_expands (test_extended.ExtendedTests.test_incompressible_expands) ... ok
+test_invalid_k (test_extended.ExtendedTests.test_invalid_k) ... ok
+test_invalid_mode (test_extended.ExtendedTests.test_invalid_mode) ... ok
+test_k_above_n_and_ties (test_extended.ExtendedTests.test_k_above_n_and_ties) ... ok
+test_legacy_huf1 (test_extended.ExtendedTests.test_legacy_huf1) ... ok
+test_missing_folder (test_extended.ExtendedTests.test_missing_folder) ... ok
+test_missing_input (test_extended.ExtendedTests.test_missing_input) ... ok
+test_multichunk_roundtrip (test_extended.ExtendedTests.test_multichunk_roundtrip) ... ok
+test_output_limit (test_extended.ExtendedTests.test_output_limit) ... ok
+test_random_top_k_oracle (test_extended.ExtendedTests.test_random_top_k_oracle) ... ok
+test_single_symbol_truncation (test_extended.ExtendedTests.test_single_symbol_truncation) ... ok
+test_symlinks_skipped (test_extended.ExtendedTests.test_symlinks_skipped) ... ok
+test_trailing_garbage (test_extended.ExtendedTests.test_trailing_garbage) ... ok
+test_truncated_archives (test_extended.ExtendedTests.test_truncated_archives) ... ok
+test_walk_permission_error (test_extended.ExtendedTests.test_walk_permission_error) ... ok
+test_wrong_magic (test_extended.ExtendedTests.test_wrong_magic) ... ok
+test_compress_decompress_ui (test_ui.DashboardTests.test_compress_decompress_ui) ... 2026-10-30 02:19:46.537 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_scan_and_error_state (test_ui.DashboardTests.test_scan_and_error_state) ... 2026-10-30 02:19:47.420 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 5.527s
+
+OK

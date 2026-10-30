@@ -1,0 +1,128 @@
+[
+  {
+    "n": 10000,
+    "k": 10,
+    "algorithm": "heap",
+    "median_ms": 7.362111000020377,
+    "median_peak_kib": 5.470703125
+  },
+  {
+    "n": 10000,
+    "k": 10,
+    "algorithm": "sort",
+    "median_ms": 8.633829000018522,
+    "median_peak_kib": 1704.8125
+  },
+  {
+    "n": 10000,
+    "k": 100,
+    "algorithm": "heap",
+    "median_ms": 6.562082000073133,
+    "median_peak_kib": 20.427734375
+  },
+  {
+    "n": 10000,
+    "k": 100,
+    "algorithm": "sort",
+    "median_ms": 9.223248999887801,
+    "median_peak_kib": 1704.8125
+  },
+  {
+    "n": 10000,
+    "k": 1000,
+    "algorithm": "heap",
+    "median_ms": 8.338218000062625,
+    "median_peak_kib": 179.353515625
+  },
+  {
+    "n": 10000,
+    "k": 1000,
+    "algorithm": "sort",
+    "median_ms": 10.772200000019438,
+    "median_peak_kib": 1704.8125
+  },
+  {
+    "n": 25000,
+    "k": 10,
+    "algorithm": "heap",
+    "median_ms": 16.745610000043598,
+    "median_peak_kib": 5.4716796875
+  },
+  {
+    "n": 25000,
+    "k": 10,
+    "algorithm": "sort",
+    "median_ms": 26.54889199993704,
+    "median_peak_kib": 4267.171875
+  },
+  {
+    "n": 25000,
+    "k": 100,
+    "algorithm": "heap",
+    "median_ms": 16.050915000050736,
+    "median_peak_kib": 20.4287109375
+  },
+  {
+    "n": 25000,
+    "k": 100,
+    "algorithm": "sort",
+    "median_ms": 29.411776999950234,
+    "median_peak_kib": 4267.171875
+  },
+  {
+    "n": 25000,
+    "k": 1000,
+    "algorithm": "heap",
+    "median_ms": 19.74717400003101,
+    "median_peak_kib": 179.353515625
+  },
+  {
+    "n": 25000,
+    "k": 1000,
+    "algorithm": "sort",
+    "median_ms": 28.02747499981706,
+    "median_peak_kib": 4267.171875
+  },
+  {
+    "n": 50000,
+    "k": 10,
+    "algorithm": "heap",
+    "median_ms": 32.08740500008389,
+    "median_peak_kib": 5.4716796875
+  },
+  {
+    "n": 50000,
+    "k": 10,
+    "algorithm": "sort",
+    "median_ms": 56.70944100006636,
+    "median_peak_kib": 8539.8984375
+  },
+  {
+    "n": 50000,
+    "k": 100,
+    "algorithm": "heap",
+    "median_ms": 32.89173400003165,
+    "median_peak_kib": 20.4287109375
+  },
+  {
+    "n": 50000,
+    "k": 100,
+    "algorithm": "sort",
+    "median_ms": 56.959602999995695,
+    "median_peak_kib": 8539.8984375
+  },
+  {
+    "n": 50000,
+    "k": 1000,
+    "algorithm": "heap",
+    "median_ms": 35.165875999837226,
+    "median_peak_kib": 179.353515625
+  },
+  {
+    "n": 50000,
+    "k": 1000,
+    "algorithm": "sort",
+    "median_ms": 62.97775300004105,
+    "median_peak_kib": 8539.8984375
+  }
+]
