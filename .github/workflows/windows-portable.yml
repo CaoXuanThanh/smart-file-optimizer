@@ -1,25 +1,61 @@
-name: Windows portable
-on: [push, workflow_dispatch]
+name: Build Windows portable
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
 permissions:
   contents: read
 jobs:
-  test:
+  build:
     runs-on: windows-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install -r requirements.txt pyinstaller==6.22.2
-      - run: python -m unittest discover -s tests -v
-      - run: >-
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt pyinstaller==6.22.2
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+      - name: Build executable
+        run: >-
           python -m PyInstaller --noconfirm --clean --onedir
           --name SmartFileOptimizer --paths src
           --add-data "app.py;." --add-data "src;src"
           --collect-all streamlit --collect-all altair
-          --collect-all smartfile --copy-metadata streamlit launcher.py
+          --collect-all smartfile --copy-metadata streamlit
+          launcher.py
+      - name: Check executable server starts
+        shell: pwsh
+        run: |
+          $process = Start-Process -FilePath dist/SmartFileOptimizer/SmartFileOptimizer.exe -PassThru -RedirectStandardOutput portable-out.log -RedirectStandardError portable-error.log
+          try {
+            $ready = $false
+            for ($i=0; $i -lt 60; $i++) {
+              if ($process.HasExited) { throw "Executable exited early" }
+              try {
+                $r = Invoke-WebRequest http://127.0.0.1:8501/_stcore/health -TimeoutSec 2
+                if ($r.StatusCode -eq 200) { $ready = $true; break }
+              } catch {}
+              Start-Sleep -Seconds 1
+            }
+            if (-not $ready) { throw "Server startup timed out" }
+          } finally {
+            if (-not $process.HasExited) { Stop-Process -Id $process.Id -Force }
+          }
+      - name: Include instructions
+        shell: pwsh
+        run: Copy-Item docs/PORTABLE_WINDOWS.md dist/SmartFileOptimizer/READ_ME.md
       - uses: actions/upload-artifact@v4
         with:
           name: SmartFileOptimizer-Windows-x64
           path: dist/SmartFileOptimizer/
           retention-days: 14
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Windows-build-logs
+          path: portable-*.log
+          if-no-files-found: ignore

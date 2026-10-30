@@ -31,9 +31,9 @@ class ExtendedTests(unittest.TestCase):
     def test_k_above_n_and_ties(self):
         self.b.write_bytes(self.a.read_bytes())
         rows, n, _ = top_k(self.root, 10)
-        self.assertEqual(
-            rows, sorted([(700, str(self.a)), (700, str(self.b))], reverse=True)
-        )
+        actual = [(size, Path(path).name) for size, path in rows]
+        expected = sorted([(700, self.a.name), (700, self.b.name)], reverse=True)
+        self.assertEqual(actual, expected)
         self.assertEqual(n, 2)
 
     def test_random_top_k_oracle(self):
