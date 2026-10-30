@@ -1,0 +1,25 @@
+name: Windows portable
+on: [push, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt pyinstaller==6.22.2
+      - run: python -m unittest discover -s tests -v
+      - run: >-
+          python -m PyInstaller --noconfirm --clean --onedir
+          --name SmartFileOptimizer --paths src
+          --add-data "app.py;." --add-data "src;src"
+          --collect-all streamlit --collect-all altair
+          --collect-all smartfile --copy-metadata streamlit launcher.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SmartFileOptimizer-Windows-x64
+          path: dist/SmartFileOptimizer/
+          retention-days: 14
