@@ -11,3 +11,7 @@ demo_data/
 build/
 dist/
 *.spec
+
+# Presentation deliverables are maintained outside the repository.
+*.ppt
+*.pptx

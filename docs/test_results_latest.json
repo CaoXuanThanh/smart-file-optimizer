@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-04",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "tests_run": 28,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "results": [
+    {
+      "test": "test_core.Tests.test_empty",
+      "status": "pass"
+    },
+    {
+      "test": "test_core.Tests.test_no_overwrite",
+      "status": "pass"
+    },
+    {
+      "test": "test_core.Tests.test_roundtrip",
+      "status": "pass"
+    },
+    {
+      "test": "test_core.Tests.test_topk",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_bad_padding",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_checksum_corruption_cleanup",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_dangling_symlink_preserved",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_disappearing_file",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_duplicate_symbols",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_existing_destination_preserved",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_incompressible_expands",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_invalid_k",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_invalid_mode",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_k_above_n_and_ties",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_legacy_huf1",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_missing_folder",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_missing_input",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_multichunk_roundtrip",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_output_limit",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_random_top_k_oracle",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_single_symbol_truncation",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_symlinks_skipped",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_trailing_garbage",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_truncated_archives",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_walk_permission_error",
+      "status": "pass"
+    },
+    {
+      "test": "test_extended.ExtendedTests.test_wrong_magic",
+      "status": "pass"
+    },
+    {
+      "test": "test_ui.DashboardTests.test_compress_decompress_ui",
+      "status": "pass"
+    },
+    {
+      "test": "test_ui.DashboardTests.test_scan_and_error_state",
+      "status": "pass"
+    }
+  ]
+}

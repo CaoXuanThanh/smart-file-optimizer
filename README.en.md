@@ -10,4 +10,6 @@ Tests: `python -m unittest discover -s tests -v`. Benchmarks: `python benchmarks
 
 HUF2 adds SHA-256 to the original deterministic Huffman format. HUF1 remains readable without checksum verification. Streaming compression uses two passes and 64 KiB buffers. Default decompression limit is 1 GiB. Source files must remain stable. Output becomes visible during writing; interrupted processes may leave partial output.
 
-Academic local prototype, not production archival software. No encryption, ZIP/RAR compatibility or guarantee of compression savings. Windows and hosted CI remain unverified. MIT license.
+Academic local prototype, not production archival software. No encryption, ZIP/RAR compatibility or guarantee of compression savings. Windows GUI/round-trip checks and successful hosted workflows at commit 2ffec51 are documented. The 2026-11-04 local Linux review passed all 28 tests; see docs/test_results_latest.json. MIT license.
+
+docs/TECHNICAL_REPORT.md contains the project rationale, algorithm flowcharts, test matrix, references and rubric mapping. See docs/VERSION_CHECK.md for the comparison against GitHub main, and docs/PROGRESS.md for evidence-backed milestones.

@@ -1,49 +1,72 @@
-# Demo 90 giây và phản biện
+## Demo 90 giây trên máy Windows hiện tại
 
-## Chuẩn bị
+Chuẩn bị trước buổi báo cáo: mở PowerShell tại thư mục có app.py, cli.py và scripts. Các lệnh dưới đây dùng Python trong .venv của dự án đang chạy được. Nếu dùng bản EXE, mở EXE để chạy giao diện; lệnh verify vẫn dùng bản mã nguồn đã cài Python trên máy của bạn.
 
-Chạy `python scripts/make_demo.py`. Chạy `python -m streamlit run app.py --server.address 127.0.0.1`. Nhập đường dẫn demo_data (script in ra đường dẫn tuyệt đối). Chọn K=3. Trước khi tạo file nén, thư mục có 5 file, Top-3 là notes.txt 576.000 B, binary.bin 262.144 B và random.bin 131.072 B.
+```powershell
+.\.venv\Scripts\python.exe scripts/make_demo.py
+.\.venv\Scripts\python.exe -m streamlit run app.py --server.address 127.0.0.1
+```
 
-1. 0–25 giây: Scan folder, chỉ vào bảng Top-K và tải CSV.
-2. 25–55 giây: Huffman Lab, chọn notes.txt, đích notes.huf chưa tồn tại. Kết quả lần chạy ở đây là 304.762 B, tiết kiệm 47,09%.
-3. 55–80 giây: Giải nén notes.huf sang restored.txt mới. HUF2 kiểm tra checksum trước báo thành công.
-4. 80–90 giây: `python cli.py verify demo_data/notes.txt demo_data/restored.txt`, giải thích `match: true`.
+Giữ cửa sổ này mở. Sao chép đường dẫn demo_data mà lệnh đầu in ra. Mở PowerShell thứ hai tại cùng thư mục để sẵn lệnh verify.
 
-Nếu đích đã tồn tại, đổi tên đích mới. Không xóa file nguồn để diễn demo. Quét sau khi nén/giải nén sẽ thấy thêm file, nên Top-K có thể khác bảng chuẩn.
+1. Chọn TOP-K EXPLORER, nhập đường dẫn demo_data và K = 3. Bấm Scan folder. Nói: “Chương trình duyệt thư mục và giữ ba file lớn nhất bằng Min-Heap.”
+2. Chọn HUFFMAN LAB. Nén demo_data/notes.txt sang demo_data/notes_baocao.huf. Nói: “Mẫu văn bản này có nhiều ký hiệu lặp nên Huffman giảm dung lượng khoảng 47%.”
+3. Giải nén demo_data/notes_baocao.huf sang demo_data/restored_baocao.txt.
+4. Trong PowerShell thứ hai, chạy:
 
-## Khi demo có lỗi
+```powershell
+.\.venv\Scripts\python.exe cli.py verify demo_data/notes.txt demo_data/restored_baocao.txt
+```
 
-- Sai thư mục: sao chép đường dẫn đầy đủ từ File Explorer.
-- Đích tồn tại: đổi tên mới, ứng dụng cố ý chặn overwrite.
-- Thư viện thiếu: dùng đúng `.venv\Scripts\python -m pip install -r requirements.txt`.
-- UI không mở: chuyển CLI, dùng chính bộ lệnh trong README.
-- File không giảm kích thước: dùng notes.txt mẫu để minh họa dữ liệu lặp; nêu rõ dữ liệu ngẫu nhiên có thể tăng.
-- Máy trình bày lỗi chưa rõ: gửi nguyên thông báo terminal và kết quả test, không chỉ ảnh cửa sổ trống.
+Chỉ vào `"match": true` và nói: “Mã SHA-256 của dữ liệu khôi phục trùng với nguồn.” Quay lại PowerPoint để kết luận.
 
-## Phản biện ngắn
+Hai tên file đầu ra phải chưa tồn tại. Khi tập lại, dùng tên mới cho cả file nén và file khôi phục, đồng thời sửa lệnh verify cho khớp. Nếu demo_data đã có file tạo từ lần trước, kết quả Top-K có thể thay đổi. Không khẳng định thư mục luôn có đúng năm file.
 
-**Vì sao Min-Heap?** Cần loại nhanh file nhỏ nhất trong K ứng viên lớn nhất, nên giữ nó ở gốc.
+Nếu giao diện gặp lỗi, dùng CLI dự phòng với tên đích mới:
 
-**Heap có sắp toàn bộ dữ liệu?** Không, chỉ đảm bảo cha không lớn hơn con. Sort K kết quả cuối để hiển thị.
+```powershell
+.\.venv\Scripts\python.exe cli.py scan demo_data -k 3
+.\.venv\Scripts\python.exe cli.py compress demo_data/notes.txt demo_data/notes_duphong.huf
+.\.venv\Scripts\python.exe cli.py decompress demo_data/notes_duphong.huf demo_data/restored_duphong.txt
+.\.venv\Scripts\python.exe cli.py verify demo_data/notes.txt demo_data/restored_duphong.txt
+```
 
-**Chứng minh Top-K đúng?** Bất biến: sau mỗi file, giữ min(K, số đã duyệt) ứng viên lớn nhất. File mới không hơn gốc thì không lọt nhóm; nếu hơn thì thay phần tử nhỏ nhất. Khởi tạo rỗng và quy nạp qua N file.
+## Các câu cần trả lời được
 
-**K>N hay bằng kích thước?** Trả tất cả N file; tie-break theo đường dẫn giảm dần để kết quả xác định.
+**Vì sao dùng Min-Heap?** Gốc là file nhỏ nhất trong K ứng viên. Khi gặp file lớn hơn, ta thay ngay ứng viên nhỏ nhất đó.
 
-**Heap khác BST?** Heap ưu tiên gốc nhỏ nhất và quan hệ cha-con; BST dùng thứ tự trái/phải để tìm kiếm theo khóa.
+**Vì sao không dùng Max-Heap?** Với cách giữ K ứng viên, ta cần truy cập nhanh phần tử nhỏ nhất để loại. Max-Heap đặt phần tử lớn nhất ở gốc nên không phù hợp bằng Min-Heap cho thao tác này.
 
-**O(K) có phải RAM cả app?** Không. Chỉ khâu lựa chọn; os.walk còn danh sách tên, lỗi có O(E), dashboard có bảng và thư viện riêng.
+**Top-K đúng như thế nào?** Sau mỗi file, heap giữ tối đa K file lớn nhất đã gặp. File mới không hơn gốc thì không cần giữ. Nếu lớn hơn gốc, thay ứng viên nhỏ nhất. Lặp đến cuối thì thu được Top-K.
 
-**Benchmark 50.000 là file thật?** Không, đó là record tái lập. Có phép đo riêng 10.000 file thật, kèm dữ liệu gốc và hai phương án cùng scanner.
+**Heap có sắp xếp toàn bộ không?** Heap chỉ bảo đảm quan hệ cha không lớn hơn con. Chương trình sắp xếp K kết quả cuối để hiển thị giảm dần.
 
-**Heap luôn nhanh hơn?** Không. Khi chi phí I/O chiếm phần lớn, chênh lệch thời gian rất nhỏ. Điểm mạnh ở đây là bộ nhớ khi K nhỏ so với N.
+**Độ phức tạp?** Khâu chọn tốn O(N log K), rồi sắp xếp kết quả O(K log K). Heap lưu O(K) phần tử. Đây không phải tổng RAM của cả ứng dụng.
 
-**Huffman có mất dữ liệu?** Giải mã theo cùng cây mã tiền tố khôi phục byte. Các fixture đã kiểm tra hash trùng. HUF2 tự kiểm tra SHA-256. HUF1 không có checksum.
+**K lớn hơn số file? K không hợp lệ?** Nếu K > N thì trả N file. K phải là số nguyên dương. Các file bằng kích thước có thứ tự phụ theo đường dẫn để kết quả nhất quán.
 
-**Hash có chống giả mạo?** Không. Người sửa được cả dữ liệu và hash có thể tạo archive hợp lệ. Đây không phải chữ ký hay mã hóa.
+**Có tự cài heap không?** Chương trình dùng heapq của Python cho thao tác heap. Phần lựa chọn Top-K, duyệt file và xử lý kết quả do chương trình tổ chức. Không trình bày rằng đã tự viết mọi phép heap nếu mã dùng thư viện.
 
-**Vì sao file có thể lớn hơn?** Header và phân bố byte ít lệch. File rỗng HUF2 cũng tốn 46 B.
+**Tại sao Huffman giải nén được?** Mã có tính tiền tố. Bộ giải nén dựng lại cùng cây từ thông tin lưu trong file, rồi đọc bit theo cây để khôi phục byte.
 
-**Streaming có cần đọc hai lần?** Có. Lượt đầu đếm tần suất để biết bảng mã, lượt hai mã hóa theo khối. Hash hai lượt giúp phát hiện nguồn thay đổi.
+**Nén có phải mã hóa bảo mật không?** Huffman biểu diễn dữ liệu bằng mã bit để nén. Nó không cung cấp mật khẩu hay giữ bí mật nội dung.
 
-**Đã production-ready?** Chưa. Chưa fuzzing toàn diện, chưa kiểm tra file nhiều GiB hay sự cố mất điện, chưa chạy máy Windows trình bày. Gói này là sản phẩm đồ án có kiểm chứng và giới hạn rõ ràng.
+**File nén có luôn nhỏ hơn không?** Không. Thông tin mô tả cây và phân bố byte có thể khiến file nén lớn hơn nguồn, nhất là dữ liệu khó nén hoặc file rất nhỏ.
+
+**50.000 phần tử là file thật?** Đó là bản ghi tổng hợp để đánh giá khâu chọn Top-K. Phép đo riêng trên thư mục có 10.000 file thật đánh giá thêm chi phí duyệt và đọc thông tin file.
+
+**Vì sao quét file thật không nhanh hơn sort?** Thời gian truy cập file chiếm tỷ trọng lớn, nên hai kết quả gần nhau. Lợi thế rõ hơn trong phép đo này là bộ nhớ.
+
+**Bộ nhớ trong bảng là gì?** Là bộ nhớ cấp phát Python đo bằng tracemalloc, không phải toàn bộ RAM tiến trình. Thời gian và bộ nhớ được đo riêng, lấy trung vị năm lần.
+
+**SHA-256 chứng minh gì?** Hash trùng là bằng chứng mạnh rằng dữ liệu khôi phục trùng nguồn trong lần kiểm tra. Hash không phải chữ ký xác thực và không giúp giữ bí mật dữ liệu.
+
+**Tại sao có giao diện trình duyệt mà vẫn chạy cục bộ?** Python chạy máy chủ trên chính máy của em. Trình duyệt truy cập 127.0.0.1 để hiển thị giao diện.
+
+**GitHub Actions dùng để làm gì?** Tự chạy các lệnh kiểm thử và đóng gói trên môi trường đã cấu hình mỗi khi cập nhật mã nguồn. Đây là phần hỗ trợ kiểm tra và bàn giao sản phẩm.
+
+## Các điểm cần nói chính xác
+
+Không nói heap luôn nhanh hơn sort. Không gọi 50.000 bản ghi là 50.000 file thật. Không nói Huffman luôn giảm dung lượng. Không gọi SHA-256 là mã hóa bảo mật. Không suy từ CI xanh rằng phần mềm đã hết lỗi.
+
+Khi thầy hỏi sâu ngoài phạm vi đã thử, nói rõ: “Trường hợp này em chưa đo trực tiếp. Kết quả hiện tại của em áp dụng cho bộ dữ liệu đã trình bày.”
