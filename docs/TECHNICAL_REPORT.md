@@ -194,30 +194,11 @@ Tài liệu giải thích cơ sở lựa chọn. Hiệu quả của giải pháp
 | `.github/workflows/` | GitHub Actions đọc để chạy kiểm thử, đóng gói |
 | `docs/` | Hướng dẫn, minh chứng và tài liệu kỹ thuật |
 
-## 8. Tiến độ và đối chiếu thang điểm
 
-[Nhật ký thực hiện](PROGRESS.md) ghi các mốc có bằng chứng. Đây là nhật ký kết quả, không phải bảng phân công đã được lập từ đầu. Nếu giảng viên yêu cầu tên người thực hiện, chữ ký hoặc mẫu kế hoạch riêng, người nộp cần điền thông tin thực tế.
-
-| Tiêu chí | Minh chứng trong repo |
-|---|---|
-| CK01: Cấu trúc lưu trữ | Mục 3 và src/smartfile/ |
-| CK02: Thuật toán | Lưu đồ, mô tả, code và demo |
-| CK03: Tra cứu tài liệu | Mục 1 và bảng nguồn ở mục 6 |
-| CK04: Lựa chọn giải pháp | So sánh phương án, chứng minh Top-K, lưu đồ và benchmark |
-| CK05: Kiểm thử | Mục 4, tests/, log thực tế và dữ liệu benchmark |
-| CK06: Tổ chức công việc | Nhật ký tiến độ và các mốc sửa lỗi có căn cứ |
-| CK07: Hồ sơ báo cáo | README, PowerPoint, mã nguồn và tài liệu demo |
-
-Bảng này chỉ dẫn nơi kiểm tra minh chứng, không phải tự chấm điểm. README được dùng làm báo cáo kỹ thuật trong repo; hình thức nộp cuối cùng theo hướng dẫn của giảng viên.
-
-## 9. Giới hạn và bàn giao
+## 8. Giới hạn
 
 Nguồn phải ổn định trong lúc nén. File đầu ra xuất hiện khi đang ghi; dừng tiến trình cưỡng bức có thể để lại file dở. Chưa có tiến độ/hủy tác vụ cho file lớn. Mặc định giới hạn giải nén 1 GiB. SHA-256 giúp kiểm tra toàn vẹn, không cung cấp mã hóa bảo mật hay chữ ký. Dashboard bind localhost và truy cập file của máy chạy chương trình.
 
-PowerPoint 18 slide được bàn giao riêng, không lưu trong repo.
-- [Lời dẫn, demo và câu hỏi bảo vệ](SPEAKER_NOTES.md)
-- [Yêu cầu bàn giao cho người chỉnh hình thức slide](PRESENTATION_HANDOFF.md)
-- [Cập nhật Git và commit](GITHUB.md)
-- [Kết quả đối chiếu gói chốt với GitHub](VERSION_CHECK.md)
+Hướng dẫn cập nhật mã nguồn nằm trong [Quy trình Git và commit](GITHUB.md).
 
 Mã nguồn dùng giấy phép MIT trong [LICENSE](../LICENSE). Giấy phép quy định quyền sử dụng mã, không phải chứng nhận chất lượng sản phẩm.

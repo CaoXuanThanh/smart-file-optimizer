@@ -6,7 +6,7 @@ Benchmark: 30/10/2026. Trạng thái kiểm tra cập nhật: 04/11/2026.
 
 Ngày 04/11/2026, chạy đủ 28 test trên Linux, không lỗi và không bỏ qua. Môi trường thực tế và kết quả từng ca nằm trong test_results_latest.json và test_results_latest.txt. Hai test giao diện dùng Streamlit AppTest.
 
-Ảnh Windows do người trình bày cung cấp xác nhận đã quét thư mục, nén/giải nén và verify SHA-256 khớp. Ảnh Actions ngày 01/11 xác nhận Python checks #2 và Build Windows portable #3 thành công tại commit 2ffec51. Ngày 04/11 đã đối chiếu mã remote với gói chốt; xem VERSION_CHECK.md. Không có lượt CI mới được kích hoạt trong lần sửa tài liệu này.
+Ảnh Windows do người trình bày cung cấp xác nhận đã quét thư mục, nén/giải nén và verify SHA-256 khớp. Ảnh Actions ngày 01/11 xác nhận Python checks #2 và Build Windows portable #3 thành công tại commit 2ffec51.
 
 Các số liệu benchmark bên dưới giữ nguyên lần đo 30/10, không phải kết quả đo tốc độ Windows. Log test_results.txt cũ là hồ sơ lịch sử, log mới có hậu tố _latest.
 

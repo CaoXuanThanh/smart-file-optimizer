@@ -12,4 +12,10 @@ HUF2 adds SHA-256 to the original deterministic Huffman format. HUF1 remains rea
 
 Academic local prototype, not production archival software. No encryption, ZIP/RAR compatibility or guarantee of compression savings. Windows GUI/round-trip checks and successful hosted workflows at commit 2ffec51 are documented. The 2026-11-04 local Linux review passed all 28 tests; see docs/test_results_latest.json. MIT license.
 
-docs/TECHNICAL_REPORT.md contains the project rationale, algorithm flowcharts, test matrix, references and rubric mapping. See docs/VERSION_CHECK.md for the comparison against GitHub main, and docs/PROGRESS.md for evidence-backed milestones.
+## Documentation
+
+- [Technical design, algorithm flowcharts and experiments](docs/TECHNICAL_REPORT.md)
+- [Validation results and limitations](docs/VALIDATION.md)
+- [Huffman file format](docs/FORMAT.md)
+- [Windows portable instructions](docs/PORTABLE_WINDOWS.md)
+- [Repository workflow](docs/GITHUB.md)
